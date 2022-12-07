@@ -16,12 +16,21 @@ $address = [
 
 function doR ($arr) {
     if (is_array($arr)) {
-        echo "<ul><li>";
+        echo "<ul>";
         foreach ($arr as $key => $value) {
-            echo $key;
-            doR($value);
+            echo "<li>";
+            if(is_array($value)) {
+                echo $key;
+                doR($value);
+            }
+            else {
+                echo $value;
+            }
+            echo "</li>";
         }
-        echo "</li></ul>";
+        echo "</ul>";
+    } else {
+        echo "<li>" . $arr . "</li>";
     }
 }
 
