@@ -1,0 +1,21 @@
+{
+    "name": "teacher/12_13_project",
+    "description": "My First php Project",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "dev-master"
+    },
+    "license": "BeerWare",
+    "autoload": {
+        "psr-4": {
+            "Teacher\\1213Project\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oleksander Nykytin",
+            "email": "keeper@ninydev.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
