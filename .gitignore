@@ -1,3 +1,4 @@
 .idea
 /12_13_project/vendor
+/12_13_project/node_modules
 /12_13_project/composer.lock
