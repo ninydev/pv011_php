@@ -7,18 +7,22 @@
 // Подключить настроки проекта
 require_once '../vendor/autoload.php';
 
-?>
+// Анализируем запрос - Request (POST, GET, COOKIE, FILES ...)
+$request = App\Http\Requests\Request::getInstance();
 
-<h1> Hello World</h1>
+// Построение ответа (класс обертка куда я буду формировать ответ)
+$response = new App\Http\Responses\JsonResponse();
 
-<pre>
-<?php
+// Вывод построенного ответа на отдачу клиенту
+echo $response->render();
 
-$myLibClass = new App\Lib\MyLibClass();
 
-$myHttpController = new App\Controllers\Http\PostController();
-$myApiController = new App\Controllers\Api\PostController();
 
-?>
+/**
+ * Вывод технических данных
+ */
+echo "<footer><pre>";
+// var_dump($_GET);
+// var_dump($_POST);
+echo "</pre></footer>";
 
-</pre>
