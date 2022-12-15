@@ -31,10 +31,10 @@ abstract class AbstractResponse implements IResponse
 
         switch ($type) {
             case ResponseTypesEnum::HTML:
-            case null:
                 self::$instance = new HtmlResponse();
                 break;
             case ResponseTypesEnum::JSON:
+            case null:
                 self::$instance = new JsonResponse();
                 break;
         }

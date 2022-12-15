@@ -17,7 +17,21 @@ use App\Http\Responses\ResponseTypesEnum;
 $request = Request::getInstance();
 
 // Построение ответа (класс обертка куда я буду формировать ответ)
-$response = AbstractResponse::getInstance(ResponseTypesEnum::JSON);
+$response = AbstractResponse::getInstance(ResponseTypesEnum::HTML);
+
+
+// Необходимо понять - какому контроллеру передать управление
+// Роутер
+
+$mainController = new \App\Controllers\Http\FirstFormController();
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $mainController->get($request, $response);
+} else {
+    $mainController->post($request, $response);
+}
+
+
 
 // Вывод построенного ответа на отдачу клиенту
 echo $response->render();

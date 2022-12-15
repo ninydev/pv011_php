@@ -24,7 +24,7 @@ class HtmlResponse extends AbstractResponse
     private  function renderMain(): string
     {
         return "<body><main>"
-            . json_encode($this->data)
+            . $this->data['htmlBodyMain']
             . "</main></body>";
     }
 
