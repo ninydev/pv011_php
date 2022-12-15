@@ -13,6 +13,10 @@ use App\Http\Responses\AbstractResponse;
 use App\Http\Responses\ResponseTypesEnum;
 
 
+// Подключаю конфигурацию проекта
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/..");
+$dotenv->load();
+
 // Анализируем запрос - Request (POST, GET, COOKIE, FILES ...)
 $request = Request::getInstance();
 

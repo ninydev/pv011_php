@@ -8,7 +8,7 @@ class HtmlResponse extends AbstractResponse
     {
         return "
         <head>
-            <title> My first site </title>
+            <title> " .$_ENV['APP_NAME']. "</title>
         </head>";
     }
 
@@ -16,7 +16,7 @@ class HtmlResponse extends AbstractResponse
     {
         return "
         <header>
-            <h1>My first site</h1>
+            <h1>" .$_ENV['APP_NAME']. "</h1>
         </header>
         ";
     }
