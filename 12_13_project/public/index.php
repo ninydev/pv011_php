@@ -17,7 +17,7 @@ use App\Http\Responses\ResponseTypesEnum;
 $request = Request::getInstance();
 
 // Построение ответа (класс обертка куда я буду формировать ответ)
-$response = AbstractResponse::getInstance(ResponseTypesEnum::HTML);
+// $response = AbstractResponse::getInstance(ResponseTypesEnum::HTML);
 
 
 // Необходимо понять - какому контроллеру передать управление
@@ -25,24 +25,34 @@ $response = AbstractResponse::getInstance(ResponseTypesEnum::HTML);
 
 $mainController = new \App\Controllers\Http\FirstFormController();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $mainController->get($request, $response);
-} else {
-    $mainController->post($request, $response);
-}
+switch ($_SERVER['REQUEST_METHOD']) {
+    case 'GET':
+        $response = AbstractResponse::getInstance(ResponseTypesEnum::HTML);
+        $mainController->get($request, $response);
+        break;
+//    case 'POST':
+//        $mainController->post($request, $response);
+//        break;
+    case 'POST':
+    case 'PUT':
+    case 'PATCH':
+        $response = AbstractResponse::getInstance(ResponseTypesEnum::JSON);
+        $mainController->put($request, $response);
+        break;
 
+}
 
 
 // Вывод построенного ответа на отдачу клиенту
 echo $response->render();
 
 
-
-/**
- * Вывод технических данных
- */
-echo "<footer><pre>";
-// var_dump($_GET);
-// var_dump($_POST);
-echo "</pre></footer>";
+//
+///**
+// * Вывод технических данных
+// */
+//echo "<footer><pre>";
+//// var_dump($_GET);
+//// var_dump($_POST);
+//echo "</pre></footer>";
 

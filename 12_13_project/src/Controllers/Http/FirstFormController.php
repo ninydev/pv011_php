@@ -21,7 +21,12 @@ class FirstFormController
     }
 
     public function post(Request $request, IResponse $response) {
-        $response->data['htmlBodyMain'] = "<div> Все хорошо </div>";
+        $response->data['htmlBodyMain'] = "<div> \n\n Все хорошо \n\n </div>";
+    }
+
+    public function put(Request $request, IResponse $response) {
+
+        $response->data['data'] = "Все хорошо";
     }
 
 }
