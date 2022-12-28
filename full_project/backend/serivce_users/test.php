@@ -1,5 +1,8 @@
 <?php
-if(isset($_POST['email']) && isset($_POST['password'])) {
+if(
+    isset($_POST['email']) && isset($_POST['password'])
+    // && strlen($_POST['email']) < 3 && strlen($_POST['password']) < 3
+) {
 
     $response = [
         'jwt' => [
