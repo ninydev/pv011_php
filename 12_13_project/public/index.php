@@ -27,7 +27,7 @@ $request = Request::getInstance();
 // Необходимо понять - какому контроллеру передать управление
 // Роутер
 
-$mainController = new \App\Controllers\Http\FirstFormController();
+$mainController = new \App\Controllers\Http\DbController();
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
