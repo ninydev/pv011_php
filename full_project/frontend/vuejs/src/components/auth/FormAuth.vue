@@ -6,6 +6,9 @@
 
 <script setup>
   import {ref} from "vue";
+  import {useJwtStore} from "../../stores/auth/jwt";
+
+  const jwtStore = useJwtStore()
 
   let email = ref()
   let password = ref()
@@ -16,28 +19,13 @@
     let frmData = new FormData()
     frmData.append('email', email.value)
     frmData.append('password', password.value)
-
-    fetch('http://localhost:63342/full_project/backend/serivce_users/test.php', {
-      method: 'POST',
-      headers: {
-        // 'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: frmData
-    }).then(res => {
-      console.log(res)
-      if (res.status === 403) {
-        throw {message: ' Auth '}
-      }
-      return res.json()
-    }).then(data => {
-      console.log(data)
-    })
-        .catch(ex => {
-          console.log(ex.message)
-        })
+    jwtStore.tryLogin(frmData)
 
   }
+
+
+
+
 
 </script>
 
